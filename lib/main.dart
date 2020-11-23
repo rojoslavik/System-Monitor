@@ -104,8 +104,51 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SfRadialGauge(),
-            SfRadialGauge(),
+            SfRadialGauge(axes: <RadialAxis> [
+              RadialAxis(
+                minimum: 0,
+                maximum: 115,
+                showLabels: false,
+                showTicks: false,
+                axisLineStyle: AxisLineStyle(
+                  thickness: 0.1,
+                  cornerStyle: CornerStyle.bothCurve,
+                  color:  Color.fromARGB(30, 0, 169, 181),
+                  thicknessUnit: GaugeSizeUnit.factor,
+                ),
+                annotations: <GaugeAnnotation>[
+                  GaugeAnnotation(
+                    positionFactor: 0.05,
+                    angle: 90,
+                    widget: Text("CPU USAGE",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                    ),
+                  )
+                ]
+              )
+            ]),
+            SfRadialGauge(axes: <RadialAxis> [
+              RadialAxis(
+                minimum: 0,
+                maximum: 115,
+                showLabels: false,
+                showTicks: false,
+                axisLineStyle: AxisLineStyle(
+                  thickness: 0.1,
+                  cornerStyle: CornerStyle.bothCurve,
+                  color:  Color.fromARGB(30, 0, 169, 181),
+                  thicknessUnit: GaugeSizeUnit.factor,
+                ),
+                annotations: <GaugeAnnotation>[
+                  GaugeAnnotation(
+                    positionFactor: 0.05,
+                    angle: 90,
+                    widget: Text("GPU USAGE",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  )
+              ])
+            ]
+            ),
           ],
         ),
       ),
