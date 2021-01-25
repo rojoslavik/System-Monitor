@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -84,6 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
+        heightFactor: 300,
+        widthFactor: 400,
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Row(
@@ -104,59 +107,61 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SfRadialGauge(axes: <RadialAxis> [
-              RadialAxis(
-                minimum: 0,
-                maximum: 115,
-                showLabels: false,
-                showTicks: false,
-                axisLineStyle: AxisLineStyle(
-                  thickness: 0.1,
-                  cornerStyle: CornerStyle.bothCurve,
-                  color:  Color.fromARGB(30, 0, 169, 181),
-                  thicknessUnit: GaugeSizeUnit.factor,
-                ),
-                annotations: <GaugeAnnotation>[
-                  GaugeAnnotation(
-                    positionFactor: 0.05,
-                    angle: 90,
-                    widget: Text("CPU USAGE",
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
-                    ),
-                  )
-                ]
-              )
-            ]),
-            SfRadialGauge(axes: <RadialAxis> [
-              RadialAxis(
-                minimum: 0,
-                maximum: 115,
-                showLabels: false,
-                showTicks: false,
-                axisLineStyle: AxisLineStyle(
-                  thickness: 0.1,
-                  cornerStyle: CornerStyle.bothCurve,
-                  color:  Color.fromARGB(30, 0, 169, 181),
-                  thicknessUnit: GaugeSizeUnit.factor,
-                ),
-                annotations: <GaugeAnnotation>[
-                  GaugeAnnotation(
-                    positionFactor: 0.05,
-                    angle: 90,
-                    widget: Text("GPU USAGE",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  )
-              ])
-            ]
+            Container(
+              constraints: BoxConstraints(minHeight: 150, minWidth: 150, maxHeight: 250, maxWidth: 300),
+              child: SfRadialGauge(axes: <RadialAxis> [
+                RadialAxis(
+                  minimum: 0,
+                  maximum: 115,
+                  showLabels: false,
+                  showTicks: false,
+                  axisLineStyle: AxisLineStyle(
+                    thickness: 0.1,
+                    cornerStyle: CornerStyle.bothCurve,
+                    color:  Color.fromARGB(30, 0, 169, 181),
+                    thicknessUnit: GaugeSizeUnit.factor,
+                  ),
+                  annotations: <GaugeAnnotation>[
+                    GaugeAnnotation(
+                      positionFactor: 0.05,
+                      angle: 90,
+                      widget: Text("CPU USAGE",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
+                      ),
+                    )
+                  ]
+                )
+              ]),
+            ),
+
+            Container(
+              constraints: BoxConstraints(minHeight: 150, minWidth: 150, maxHeight: 250, maxWidth: 300),
+              child: SfRadialGauge(axes: <RadialAxis> [
+                RadialAxis(
+                  minimum: 0,
+                  maximum: 115,
+                  showLabels: false,
+                  showTicks: false,
+                  axisLineStyle: AxisLineStyle(
+                    thickness: 0.1,
+                    cornerStyle: CornerStyle.bothCurve,
+                    color:  Color.fromARGB(30, 0, 169, 181),
+                    thicknessUnit: GaugeSizeUnit.factor,
+                  ),
+                  annotations: <GaugeAnnotation>[
+                    GaugeAnnotation(
+                      positionFactor: 0.05,
+                      angle: 90,
+                      widget: Text("GPU USAGE",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    )
+                ])
+              ]
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
